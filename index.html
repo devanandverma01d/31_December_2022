@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Traversing</title>
+    <style>
+        div#grandparent {
+            border: 2px solid red;
+        }
+
+        div#parent {
+            border: 2px dashed blue;
+        }
+
+        div.child1 {
+            border: 2px groove green;
+        }
+
+        div.child2 {
+            border: 2px ridge orange;
+        }
+    </style>
+
+<body>
+    </head>
+    <div id="grandparent">
+        Grandparent
+        <div id="parent">
+            Parent
+            <div class="child1">
+                child1
+            </div>
+            <div class="child2">
+                child2
+            </div>
+        </div>
+    </div>
+
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Devanand</td>
+                <td>Verma</td>
+                <td><button data-td="1" onclick="deletetd(this)">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Chaitnya</td>
+                <td>Shekhran</td>
+                <td><button data-td="2" onclick="deletetd(this)">Delete</button></td>
+
+            </tr>
+            <tr>
+                <td>Anantha</td>
+                <td>Vishveshvaraiyya</td>
+                <td><button data-td="3" onclick="deletetd(this)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+        let c1 = document.querySelector('.child1')
+        c1.innerHTML = "Children1";
+        c1.style.border = '3px solid black';
+        let gp = document.querySelector('.child2').closest('div#grandparent');
+        console.log(gp);
+        //thiws is Parent to child traversing
+        let ltd = document.querySelector('table tbody tr td:last-child');
+        console.log(ltd);
+        ltd.style.color = 'red';
+        // let tbody = ltd.closest('tbody');
+        // let chaitnyatd = tbody.querySelector('tr:nth-child(2) td:first-child');
+        // console.log(chaitnyatd);
+        // chaitnyatd.style.color = 'red';
+
+        let chaitnyatd = document.querySelector('table tbody tr:nth-child(2) td:first-child');
+        chaitnyatd.style.color = 'blue';
+
+
+    </script>
+    <script>
+        function deletetd(element) {
+            console.log(element);
+            let tr = element.closest('tr');
+            tr.remove();
+            console.log(tr);
+        }
+    </script>
+</body>
+
+</html>
